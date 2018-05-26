@@ -1,0 +1,86 @@
+{% extends "AlmacenBundle::layout.html.twig" %}
+
+
+{% block menu %}
+    {% include "AlmacenBundle:Categoria:menu.categorias.html.twig" with { 'categorias': categorias } %}
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="col-lg-6">
+            <h1 style="margin-top: 10px;">{{ categoria.nombre }}</h1>
+
+        <ul class="list-group" style="margin-bottom: 10px;">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Productos en total:
+                <span class="badge badge-primary badge-pill">{{ totalItems }}</span>
+            </li>
+        </ul>
+
+        {% for producto in productos %}
+
+            <p class="float-left"><img width="150" src="{{ asset("uploads/"~producto.img) }}"/></p>
+            <p style="margin-left: 160px;"><strong><a href="{{ path("detalle_producto", {"id":producto.id}) }}">{{ producto.nombre }}</a></strong> <br/>
+                {{ producto.categoria.nombre }}<br/>
+                Autor: <strong>{{ producto.usuario.nombre }}</strong> <br/>
+                {% for pro in producto.productoEtiqueta %}
+                    {{ pro.etiqueta.nombre }}
+                {% endfor %}
+            </p>
+
+            {% if (app.user.id is defined) and (producto.usuario.id == app.user.id) %}
+                <p style="margin-left: 160px;">
+                    <a class="btn btn-danger" href="{{ path("delete_producto",{"id":producto.id }) }}">Eliminar</a>
+                    <a class="btn btn-warning" href="{{ path("edit_producto",{"id":producto.id }) }}">Editar</a>
+                </p>
+            {% endif %}
+
+            <div class="clearfix"></div>
+            <hr/>
+        {% endfor %}
+
+        {% if(totalItems != 0) %}
+            <nav aria-label="navigation">
+                <ul class="pagination">
+
+                    {% if(pagina!=1) %}
+                        {% set pagina = pagina-1 %}
+                        <li class="page-item"><a class="page-link" href="{{ path("read_categoria",{"id": categoria.id, "pagina":pagina }) }}">
+                                Anterior
+                            </a>
+                        </li>
+                        {% else %}
+                            <li class="page-item disabled"><a class="page-link" href="{{ path("read_categoria",{"id": categoria.id, "pagina":pagina }) }}">
+                                    Anterior
+                                </a>
+                            </li>
+                    {% endif %}
+
+                    {% for i in 1..pagesCount %}
+                        <li class="page-item">
+                            <a class="page-link"
+                               href="{{ path("read_categoria",{"id": categoria.id, "pagina":i }) }}">{{ i }}</a>
+                        </li>
+                    {% endfor %}
+
+                    {% if(pagina_m!=pagesCount) %}
+                        {% set pagina_m = pagina_m+1 %}
+                        <li class="page-item"><a class="page-link"
+                                                 href="{{ path("read_categoria",{"id": categoria.id, "pagina":pagina_m }) }}">Siguiente</a>
+                        </li>
+                        {% else %}
+                            <li class="page-item disabled"><a class="page-link"
+                                                     href="{{ path("read_categoria",{"id": categoria.id, "pagina":pagina_m }) }}">Siguiente</a>
+                            </li>
+                    {% endif %}
+
+                </ul>
+            </nav>
+        {% else %}
+            <div class="alert alert-info">No hay productos con esta categoría.</div>
+        {% endif %}
+
+    </div>
+
+{% endblock %}

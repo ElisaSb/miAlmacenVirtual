@@ -1,0 +1,19 @@
+usuario:
+    resource: "@AlmacenBundle/Controller/UsuarioController.php"
+    type:     annotation
+
+etiquetas:
+    resource: "@AlmacenBundle/Controller/EtiquetaController.php"
+    type:     annotation
+
+categorias:
+    resource: "@AlmacenBundle/Controller/CategoriaController.php"
+    type:     annotation
+
+productos:
+    resource: "@AlmacenBundle/Controller/ProductoController.php"
+    type:     annotation
+
+grupos:
+    resource: "@AlmacenBundle/Controller/GrupoController.php"
+    type:     annotation

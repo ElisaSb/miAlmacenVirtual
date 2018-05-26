@@ -1,0 +1,41 @@
+AlmacenBundle\Entity\ProductoEtiqueta:
+    type: entity
+    table: producto_etiqueta
+    indexes:
+        fk_producto_etiqueta_productos:
+            columns:
+                - producto_id
+        fk_producto_etiqueta_etiquetas:
+            columns:
+                - etiqueta_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        producto:
+            targetEntity: Producto
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: productoEtiqueta
+            joinColumns:
+                producto_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        etiqueta:
+            targetEntity: Etiqueta
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: productoEtiqueta
+            joinColumns:
+                etiqueta_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

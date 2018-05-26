@@ -1,0 +1,81 @@
+AlmacenBundle\Entity\Producto:
+    type: entity
+    table: productos
+    repositoryClass: AlmacenBundle\Repository\ProductoRepository
+    indexes:
+        fk_productos_usuarios:
+            columns:
+                - usuario_id
+        fk_productos_categorias:
+            columns:
+                - categoria_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+        descripcion:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        precio:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+        fechaCaducidad:
+            type: date
+            nullable: true
+            column: fecha_caducidad
+        ubicacion:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        img:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+    manyToOne:
+        usuario:
+            targetEntity: Usuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                usuario_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        categoria:
+            targetEntity: Categoria
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: producto
+            joinColumns:
+                categoria_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    oneToMany:
+      productoEtiqueta:
+        targetEntity: ProductoEtiqueta
+        mappedBy: producto
+        cascade: ["persist"]
+    lifecycleCallbacks: {  }

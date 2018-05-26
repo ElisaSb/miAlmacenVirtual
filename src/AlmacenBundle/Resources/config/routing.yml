@@ -1,0 +1,80 @@
+login:
+    resource: "@AlmacenBundle/Controller/UsuarioController.php"
+    type:     annotation
+
+validar:
+    resource: "@AlmacenBundle/Controller/UsuarioController.php"
+    type:     annotation
+
+registro:
+    resource: "@AlmacenBundle/Controller/UsuarioController.php"
+    type:     annotation
+
+logout:
+    resource: "@AlmacenBundle/Controller/UsuarioController.php"
+    type:     annotation
+
+index_etiquetas:
+    resource: "@AlmacenBundle/Controller/EtiquetaController.php"
+    type:     annotation
+
+add_etiquetas:
+    resource: "@AlmacenBundle/Controller/EtiquetaController.php"
+    type:     annotation
+
+delete_etiquetas:
+    resource: "@AlmacenBundle/Controller/EtiquetaController.php"
+    type:     annotation
+
+index_categorias:
+    resource: "@AlmacenBundle/Controller/CategoriaController.php"
+    type:     annotation
+
+add_categorias:
+    resource: "@AlmacenBundle/Controller/CategoriaController.php"
+    type:     annotation
+
+edit_categorias:
+    resource: "@AlmacenBundle/Controller/CategoriaController.php"
+    type:     annotation
+
+delete_categorias:
+    resource: "@AlmacenBundle/Controller/CategoriaController.php"
+    type:     annotation
+
+read_categorias:
+    resource: "@AlmacenBundle/Controller/CategoriaController.php"
+    type:     annotation
+
+add_producto:
+    resource: "@AlmacenBundle/Controller/ProductoController.php"
+    type:     annotation
+
+delete_producto:
+    resource: "@AlmacenBundle/Controller/ProductoController.php"
+    type:     annotation
+
+edit_producto:
+    resource: "@AlmacenBundle/Controller/ProductoController.php"
+    type:     annotation
+
+detalle_producto:
+    resource: "@AlmacenBundle/Controller/ProductoController.php"
+    type:     annotation
+
+add_grupos:
+    resource: "@AlmacenBundle/Controller/GrupoController.php"
+    type:     annotation
+
+edit_grupos:
+    resource: "@AlmacenBundle/Controller/GrupoController.php"
+    type:     annotation
+
+delete_grupos:
+    resource: "@AlmacenBundle/Controller/GrupoController.php"
+    type:     annotation
+
+read_grupos:
+    resource: "@AlmacenBundle/Controller/GrupoController.php"
+    type:     annotation
+
