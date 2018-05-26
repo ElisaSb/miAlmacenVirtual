@@ -1,7 +1,7 @@
 <a name="inicio"></a>
-# PROYECTO SYMFONY
+# PROYECTO MI ALMACEN VIRTUAL
 
-Proyecto prueba de Symfony 3.
+Proyecto final de ciclo con Symfony.
 
 ## Indice
 
@@ -16,10 +16,10 @@ Proyecto prueba de Symfony 3.
 <a name="clonar"></a>
 ### Clonar el proyecto
 
- * Clona el repositorio [https://github.com/ElisaSb/BlogSymfony.git][1] e instala los archivos necesarios.
+ * Clona el repositorio [https://github.com/ElisaSb/miAlmacenVirtual.git][1] e instala los archivos necesarios.
     
-       $ git clone https://github.com/ElisaSb/BlogSymfony.git
-       $ cd BlogSymfony
+       $ git clone https://github.com/ElisaSb/miAlmacenVirtual.git
+       $ cd miAlmacenVirtual
        $ composer install
 
 <a name="baseDatos"></a>
@@ -38,7 +38,7 @@ Proyecto prueba de Symfony 3.
        parameters:
             database_host: 127.0.0.1
             database_port: null
-            database_name: blog
+            database_name: almacen
             database_user: tu_usuario
             database_password: contraseña_usuario
       
@@ -59,7 +59,7 @@ Ya tenemos corriendo la aplicación web de prueba.
 
 [<sub>Volver al inicio</sub>](#inicio)
 
-[1]:  https://github.com/ElisaSb/BlogSymfony.git
+[1]:  https://github.com/ElisaSb/miAlmacenVirtual.git
 [2]:  http://127.0.0.1:8000
 [3]:  http://127.0.0.1:8000/es
 [4]:  http://127.0.0.1:8000/en
