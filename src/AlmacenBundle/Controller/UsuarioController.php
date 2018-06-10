@@ -20,7 +20,32 @@ class UsuarioController extends Controller
     }
 
     /**
+     * @Route("/usuarios/index", name="index_usuarios")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+
+    public function indexAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $usuario_repo = $em->getRepository("AlmacenBundle:Usuario");
+        $usuarios = $usuario_repo->findAll();
+        $grupo_repo = $em->getRepository("AlmacenBundle:Grupo");
+        $grupos = $grupo_repo->findAll();
+
+        $categoria_repo = $em->getRepository("AlmacenBundle:Categoria");
+        $categorias = $categoria_repo->findAll();
+
+        return $this->render("AlmacenBundle:Usuario:index.html.twig", array(
+            "categorias" => $categorias,
+            "usuarios" => $usuarios
+        ));
+    }
+
+    /**
      * @Route("/login", name="login")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
 
     public function loginAction(Request $request)
