@@ -1,4 +1,4 @@
-usuario:
+usuarios:
     resource: "@AlmacenBundle/Controller/UsuarioController.php"
     type:     annotation
 
@@ -16,4 +16,8 @@ productos:
 
 grupos:
     resource: "@AlmacenBundle/Controller/GrupoController.php"
+    type:     annotation
+
+pruebas:
+    resource: "@AlmacenBundle/Controller/DefaultController.php"
     type:     annotation
