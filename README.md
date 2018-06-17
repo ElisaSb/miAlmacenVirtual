@@ -33,7 +33,7 @@ Proyecto final de ciclo con Symfony.
 <a name="parameters"></a>
 ### Modificar parameters.yml
            
- * Modifica el archivo parameters.yml de la ruta BlogSymfony/app/config/parameters.yml
+ * Modifica el archivo parameters.yml de la ruta miAlmacenVirtual/app/config/parameters.yml
  
        parameters:
             database_host: 127.0.0.1
