@@ -27,17 +27,32 @@ class ProductoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $producto_repo = $em->getRepository("AlmacenBundle:Producto");
+        $grupo_repo = $em->getRepository("AlmacenBundle:Grupo");
+        $grupos = $grupo_repo->findAll();
         
         $categoria_repo = $em->getRepository("AlmacenBundle:Categoria");
         $categorias = $categoria_repo->findAll();
 
+        $productosDelGrupo = [];
+        $usuarioLogged = $this->getUser();
         $numeroPagina = 5;
         $productos = $producto_repo->getPaginaProductos($numeroPagina, $pagina);
-        $totalItems = count($productos);
+
+        if ($usuarioLogged != null){
+            foreach ($productos as $producto){
+                $productoGrupoId = $producto->getUsuario()->getGrupo()->getId();
+
+                if ($productoGrupoId == $usuarioLogged->getGrupo()->getId()){
+                    $productosDelGrupo[] = $producto;
+                }
+            }
+        }
+
+        $totalItems = count($productosDelGrupo);
         $pagesCount = ceil($totalItems/$numeroPagina);
 
         return $this->render("AlmacenBundle:Producto:index.html.twig", array(
-            "productos" => $productos,
+            "productos" => $productosDelGrupo,
             "categorias" => $categorias,
             "totalItems" => $totalItems,
             "pagesCount" => $pagesCount,

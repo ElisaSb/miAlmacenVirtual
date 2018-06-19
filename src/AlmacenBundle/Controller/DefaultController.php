@@ -3,9 +3,15 @@
 namespace AlmacenBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class DefaultController extends Controller
 {
+
+    /**
+     * @Route("/pruebas", name="pruebas")
+     */
+
     public function indexAction()
     {
 
@@ -29,15 +35,13 @@ class DefaultController extends Controller
 //
 //        die();
 
-        //COMPROBAR USUARIOS
+//        COMPROBAR USUARIOS
 //        $em = $this->getDoctrine()->getEntityManager();
 //        $usuario_repo = $em->getRepository("AlmacenBundle:Usuario");
 //        $usuarios = $usuario_repo->findAll();
 //
 //        foreach ($usuarios as $usuario){
-//            echo $usuario->getNombre()."<br/>";
-//            echo $usuario->getGrupo()->getNombre()."<br/>";
-//            echo "<hr/>";
+//            dump($usuario);
 //        }
 //
 //        die();
@@ -95,6 +99,6 @@ class DefaultController extends Controller
 //        }
 //
 //        die();
-        return $this->render('AlmacenBundle:Default:index.html.twig');
+//        return $this->render('AlmacenBundle:Default:index.html.twig');
     }
 }

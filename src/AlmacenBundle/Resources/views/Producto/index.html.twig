@@ -19,30 +19,34 @@
             {% endfor %}
         {% endif %}
 
-        {% for producto in productos %}
+        {% if app.user is not null %}
 
-            <p class="float-left"><img width="150" src="{{ asset("uploads/"~producto.img) }}"/></p>
-            <p style="margin-left: 160px;"><strong><a href="{{ path("detalle_producto", {"id":producto.id}) }}">{{ producto.nombre }}</a></strong><br/>
-                {{ producto.categoria.nombre }}<br/>
-                Autor: <strong>{{ producto.usuario.nombre }}</strong> <br/>
-                {% for pro in producto.productoEtiqueta %}
-                    {{ pro.etiqueta.nombre }}
-                {% endfor %}
-            </p>
+            {% for producto in productos %}
 
-            {% if (app.user.id is defined) and (producto.usuario.id == app.user.id) %}
-                <p style="margin-left: 160px;">
-                    <a class="btn btn-danger"
-                       href="{{ path("delete_producto",{"id":producto.id }) }}">{{ "btn_delete" | trans }}</a>
-                    <a class="btn btn-warning" href="{{ path("edit_producto",{"id":producto.id }) }}">
-                        {{ "btn_edit" | trans }}
-                    </a>
-                </p>
-            {% endif %}
+                    <p class="float-left"><img width="150" src="{{ asset("uploads/"~producto.img) }}"/></p>
+                    <p style="margin-left: 160px;"><strong><a
+                                    href="{{ path("detalle_producto", {"id":producto.id}) }}">{{ producto.nombre }}</a></strong><br/>
+                        {{ producto.categoria.nombre }}<br/>
+                        Autor: <strong>{{ producto.usuario.nombre }}</strong> <br/>
+                        {% for pro in producto.productoEtiqueta %}
+                            {{ pro.etiqueta.nombre }}
+                        {% endfor %}
+                    </p>
 
-            <div class="clearfix"></div>
-            <hr/>
-        {% endfor %}
+                    {% if (app.user.id is defined) and (producto.usuario.id == app.user.id) %}
+                        <p style="margin-left: 160px;">
+                            <a class="btn btn-danger"
+                               href="{{ path("delete_producto",{"id":producto.id }) }}">{{ "btn_delete" | trans }}</a>
+                            <a class="btn btn-warning" href="{{ path("edit_producto",{"id":producto.id }) }}">
+                                {{ "btn_edit" | trans }}
+                            </a>
+                        </p>
+                    {% endif %}
+
+                    <div class="clearfix"></div>
+                    <hr/>
+
+            {% endfor %}
 
         <nav aria-label="navigation">
             <ul class="pagination">
@@ -83,6 +87,8 @@
 
             </ul>
         </nav>
+
+        {% endif %}
 
     </div>
 

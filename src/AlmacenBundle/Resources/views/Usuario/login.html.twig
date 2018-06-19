@@ -46,10 +46,10 @@
 
     {% if is_granted('ROLE_USER') %}
         <div class="alert alert-info">Estas logueado como usuario normal</div>
-    {% endif %}
-
-    {% if is_granted('ROLE_ADMIN') %}
-        <div class="alert alert-info">Estas logueado como ADMINISTRADOR TODOPODEROSO</div>
+    {% elseif is_granted('ROLE_ADMIN') %}
+        <div class="alert alert-info">Estas logueado como ADMINISTRADOR </div>
+    {% elseif is_granted('ROLE_SUPER_ADMIN') %}
+        <div class="alert alert-info">Estas logueado como <strong>ADMINISTRADOR TODOPODEROSO</strong></div>
     {% endif %}
 
     <div class="clearfix"></div>
